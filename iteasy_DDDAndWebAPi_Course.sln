@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32602.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositeDesignPattern", "CompositeDesignPattern\CompositeDesignPattern.csproj", "{40BCE51E-7052-4040-866F-876BB097ECE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iteasy_Client", "iteasy_Client\iteasy_Client.csproj", "{C53C75CF-08FF-4432-BBF4-4DFC77597CDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{40BCE51E-7052-4040-866F-876BB097ECE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40BCE51E-7052-4040-866F-876BB097ECE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40BCE51E-7052-4040-866F-876BB097ECE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40BCE51E-7052-4040-866F-876BB097ECE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C53C75CF-08FF-4432-BBF4-4DFC77597CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C53C75CF-08FF-4432-BBF4-4DFC77597CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C53C75CF-08FF-4432-BBF4-4DFC77597CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C53C75CF-08FF-4432-BBF4-4DFC77597CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2468C90B-3DFB-42BE-AA71-73B7FDDCAC19}
+	EndGlobalSection
+EndGlobal
