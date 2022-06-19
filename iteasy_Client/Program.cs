@@ -9,55 +9,80 @@ using Eshop_DataAccess.Infra;
 using Eshop_DataAccess.Infra.Commands;
 using Eshop_DataAccess.Infra.Enums;
 using Eshop_DataAccess.Repositories;
+using MediatorDesignPattern.Infra.Concrete;
+using MediatorDesignPattern.Infra.Concrete.Mediator;
 
 
 #region wrapper
-static void PrintCart(ShoppingCartRepository shoppingCartRepository)
-{
-    var totalPrice = 0m;
-    foreach (var lineItem in shoppingCartRepository.LineItems)
-    {
-        var price = lineItem.Value.Product.Price * lineItem.Value.Quantity;
+//static void PrintCart(ShoppingCartRepository shoppingCartRepository)
+//{
+//    var totalPrice = 0m;
+//    foreach (var lineItem in shoppingCartRepository.LineItems)
+//    {
+//        var price = lineItem.Value.Product.Price * lineItem.Value.Quantity;
 
-        Console.WriteLine($"{lineItem.Key} " +
-            $"${lineItem.Value.Product.Price} x {lineItem.Value.Quantity} = ${price}");
+//        Console.WriteLine($"{lineItem.Key} " +
+//            $"${lineItem.Value.Product.Price} x {lineItem.Value.Quantity} = ${price}");
 
-        totalPrice += price;
-    }
+//        totalPrice += price;
+//    }
 
-    Console.WriteLine($"Total price:\t${totalPrice}");
-}
+//    Console.WriteLine($"Total price:\t${totalPrice}");
+//}
 #endregion
+
+
+#region MediatorDesignPattern
+
+var networkMediator = new NetworkMediator();
+
+var desktopComputer = new DesktopComputer("computer-1", networkMediator);
+
+var server = new Server("server-1", networkMediator);
+
+networkMediator.Register("computer-1", desktopComputer);
+networkMediator.Register("server-1", server);
+
+desktopComputer.SendCommand("server-1", "reboot");
+server.SendCommand("computer-1", "trigger-updates");
+
+Console.ReadKey();
+
+
+#endregion
+
+
+
 
 #region Eshop_DataAccess_Executer 
 
-var shoppingCartRepository = new ShoppingCartRepository();
-var productsRepository = new ProductsRepository();
+//var shoppingCartRepository = new ShoppingCartRepository();
+//var productsRepository = new ProductsRepository();
 
-var product = productsRepository.FindBy("SM7B");
+//var product = productsRepository.FindBy("SM7B");
 
-var addToCartCommand = new AddToCartCommand(shoppingCartRepository,
-    productsRepository,
-    product);
+//var addToCartCommand = new AddToCartCommand(shoppingCartRepository,
+//    productsRepository,
+//    product);
 
-var increaseQuantityCommand = new ChangeQuantityCommand(
-    Operation.Increase,
-    shoppingCartRepository,
-    productsRepository,
-    product);
+//var increaseQuantityCommand = new ChangeQuantityCommand(
+//    Operation.Increase,
+//    shoppingCartRepository,
+//    productsRepository,
+//    product);
 
-var manager = new CommandManager();
-manager.Invoke(addToCartCommand);
-manager.Invoke(increaseQuantityCommand);
-manager.Invoke(increaseQuantityCommand);
-manager.Invoke(increaseQuantityCommand);
-manager.Invoke(increaseQuantityCommand);
+//var manager = new CommandManager();
+//manager.Invoke(addToCartCommand);
+//manager.Invoke(increaseQuantityCommand);
+//manager.Invoke(increaseQuantityCommand);
+//manager.Invoke(increaseQuantityCommand);
+//manager.Invoke(increaseQuantityCommand);
 
-PrintCart(shoppingCartRepository);
+//PrintCart(shoppingCartRepository);
 
-manager.Undo();
+//manager.Undo();
 
-PrintCart(shoppingCartRepository);
+//PrintCart(shoppingCartRepository);
 
 
 #endregion
